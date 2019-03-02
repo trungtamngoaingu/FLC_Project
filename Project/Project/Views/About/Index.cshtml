@@ -1,0 +1,75 @@
+﻿@using Project.Models
+@using PagedList.Mvc
+@model  List<GetAboutModels>
+
+
+<h3>Bảng About</h3>
+<a href="#">Create</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width:50px">ID</th>
+            <th style="width:130px">Họ Và Tên</th>
+            <th style="width:130px">Metatitle</th>
+            <th style="width:130px">Mô Tả</th>
+            <th style="width:130px">Hình Ảnh</th>
+            <th style="width:130px">Chi Tiết</th>
+            <th style="width:130px">Ngày Tạo</th>
+            <th style="width:130px">Tạo Bởi</th>
+            <th style="width:130px">Ngày sửa</th>
+            <th style="width:130px">Sửa Bởi</th>
+            <th style="width:130px">Trạng Thái</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+
+            int stt = 0;
+            foreach (GetAboutModels item in Model)
+            {
+                stt++;
+                <tr>
+                    <th>
+                        @stt
+                    </th>
+
+                    <td>@item.Name</td>
+                    <td>@item.MetaTitle</td>
+                    <td>@item.Description</td>
+                    <td>@item.Image</td>
+                    <td>@item.Detail</td>
+                    <td>@item.CreatedDate</td>
+                    <td>@item.CreatedBy</td>
+                    <td>@item.ModifiedDate</td>
+                    <td>@item.ModifiedBy</td>
+                    <td>
+                        @if (@item.Status == true)
+                        {
+
+                            <span class="textStatitem">Hoạt Động</span>
+
+
+                        }
+
+                        @if (@item.Status == false)
+                        {
+                            <span class="textNoStatitem">Khóa</span>
+
+                        }
+
+
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" onclick="GetitemerById(@item.ID)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger btn-sm" onclick="ShowFromDeleteitemer(@item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+
+</script>
